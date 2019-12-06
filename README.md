@@ -39,14 +39,19 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+Routers and Middleware
 
 - [ ] Describe Middleware?
+Middleware is the code that is ran on a endpoint before the endpoint is hit.
 
 - [ ] Describe a Resource?
+A resource is what we send back to the user. (data)
 
 - [ ] What can the API return to help clients know if a request was successful?
+On succesful request an API can return to client a status code and any resource.
 
 - [ ] How can we partition our application into sub-applications?
+with the use of router.
 
 ## Minimum Viable Product
 
@@ -67,7 +72,8 @@ The description of the structure and extra information about each _resource_ sto
 #### Projects
 
 | Field       | Data Type | Metadata                                                                    |
-| ----------- | --------- | --------------------------------------------------------------------------- |
+| ----------- | --------- | -------------------------
+.3-------------------------------------------------- |
 | id          | number    | no need to provide it when creating projects, the database will generate it |
 | name        | string    | required.                                                                   |
 | description | string    | required.                                                                   |
