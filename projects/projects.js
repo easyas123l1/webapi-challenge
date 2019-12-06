@@ -4,6 +4,7 @@ const router = require('express').Router();
 
 const Projects = require('../data/helpers/projectModel');
 
+// typically would put this custom middleware in a seperate folder 
 const validateProjectId = (req,res,next) =>{
     const {id} =  req.params;
 
@@ -45,10 +46,8 @@ router.get('/:id', validateProjectId, (req, res) =>{
 
 // Get project actions
 router.get('/:id/actions', validateProjectId, (req,res) =>{
-  console.log('Called?');
   const {id} = req.params;
   Projects.getProjectActions(id).then(actions =>{
-      console.log(actions);
       res.status(200).json(actions);
   }).catch(error =>{
     console.log(error);

@@ -3,8 +3,9 @@ const router = require('express').Router();
 
 const Actions = require('../data/helpers/actionModel');
 
+// typically would put this custom middleware in a seperate folder 
 const validateActionId = (req,res,next) =>{
-  const {id} =  req.params;
+  const {id} = req.params;
 
   if(id){
       Actions.get(id).then(action =>{
@@ -38,17 +39,16 @@ router.get('/:id', validateActionId, (req, res) =>{
   Actions.get(id).then(action =>{
       res.status(200).json(action);
   }).catch(error =>{
+    console.log(error);
       res.status(500).json({error: "An error occurred fetching action."});
   });
 });
 
 // Add new action to the database
-router.post('/:id', validateActionId, (req, res) =>{
+router.post('/', (req, res) =>{
   const {description, notes} = req.body;
-  const {id} = req.params;
-
   if(description, notes){
-      Actions.insert({project_id:id, ...req.body}).then(action =>{
+      Actions.insert({...req.body}).then(action =>{
           res.status(201).json(action);
       }).catch(error =>{
           console.log(error);
@@ -80,7 +80,7 @@ router.put('/:id', validateActionId, (req, res) =>{
 router.delete('/:id', validateActionId, (req,res) =>{
   const {id} = req.params;
   Actions.remove(id).then(result =>{
-      res.status(200).json({message: "Success"});
+      res.status(200).json({message: "Successfully removed!"});
   }).catch(error =>{
     console.log(error);
       res.status(500).json({error: "An error occurred while attemping to remove action."})
