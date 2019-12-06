@@ -15,6 +15,7 @@ const validateActionId = (req,res,next) =>{
               res.status(400).json({error: "Invalid action id provided"});
           }
       }).catch(error =>{
+        console.log(error);
           res.status(500).json({error: "An error occurred while fetching action from the database."});
       });
   }
@@ -25,6 +26,7 @@ router.get('/', (req, res) =>{
   Actions.get().then(actions =>{
       res.status(200).json(actions);
   }).catch(error =>{
+    console.log(error);
       res.status(500).json({error: "Something went wrong while the server was retrieving actions."});
   });
 });
@@ -66,6 +68,7 @@ router.put('/:id', validateActionId, (req, res) =>{
       Actions.update(id, {description, notes}).then(action =>{
           res.status(200).json(action);
       }).catch(error =>{
+        console.log(error);
           res.status(500).json({error: "something went wrong while updating the action info"});
       });
   }else{
@@ -79,6 +82,7 @@ router.delete('/:id', validateActionId, (req,res) =>{
   Actions.remove(id).then(result =>{
       res.status(200).json({message: "Success"});
   }).catch(error =>{
+    console.log(error);
       res.status(500).json({error: "An error occurred while attemping to remove action."})
   })
 });
