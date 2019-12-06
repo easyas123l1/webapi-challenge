@@ -5,6 +5,11 @@ const router = require('express').Router();
 const Projects = require('../data/helpers/projectModel');
 
 // typically would put this custom middleware in a seperate folder 
+// for a larger app we would break down this file in this folder into smaller 
+// files for seperating concerns such as for this example item can be whatever its doing.
+// itemRouter item("Middleware")**This can be broken into many items if needed** like validator
+// testing files would also be placed in this directory!  This method keeps everything together
+
 const validateProjectId = (req,res,next) =>{
     const {id} =  req.params;
 
